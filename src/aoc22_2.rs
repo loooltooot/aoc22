@@ -7,7 +7,13 @@ pub fn solution() {
         Lose - 0 pts
         Draw - 3 pts
         Win - 6 pts
+
+        Part two edits:
+        X - lose
+        Y - draw
+        Z - win
     */
+
     const ROCK_PTS: u32 = 1;
     const PAPE_PTS: u32 = 2;
     const SCIS_PTS: u32 = 3;
@@ -27,29 +33,29 @@ pub fn solution() {
 
         match turn {
             (opp, "X") => {
-                score += ROCK_PTS;
+                score += LOSE_PTS;
                 match opp {
-                    "A" => score += DRAW_PTS,
-                    "B" => score += LOSE_PTS,
-                    "C" => score += WIN_PTS,
+                    "A" => score += SCIS_PTS,
+                    "B" => score += ROCK_PTS,
+                    "C" => score += PAPE_PTS,
                     _ => panic!("This is not R&P&S...")
                 }
             },
             (opp, "Y") => {
-                score += PAPE_PTS;
+                score += DRAW_PTS;
                 match opp {
-                    "A" => score += WIN_PTS,
-                    "B" => score += DRAW_PTS,
-                    "C" => score += LOSE_PTS,
+                    "A" => score += ROCK_PTS,
+                    "B" => score += PAPE_PTS,
+                    "C" => score += SCIS_PTS,
                     _ => panic!("This is not R&P&S...")
                 }
             },
             (opp, "Z") => {
-                score += SCIS_PTS;
+                score += WIN_PTS;
                 match opp {
-                    "A" => score += LOSE_PTS,
-                    "B" => score += WIN_PTS,
-                    "C" => score += DRAW_PTS,
+                    "A" => score += PAPE_PTS,
+                    "B" => score += SCIS_PTS,
+                    "C" => score += ROCK_PTS,
                     _ => panic!("This is not R&P&S...")
                 }
             },
