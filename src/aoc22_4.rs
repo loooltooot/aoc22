@@ -16,7 +16,7 @@ pub fn solution() {
                 .collect::<Vec<RangeInclusive<u32>>>()
         };
         
-        if ranges[0].clone().all(|num| ranges[1].contains(&num)) || ranges[1].clone().all(|num| ranges[0].contains(&num)) {
+        if ranges[0].clone().any(|num| ranges[1].contains(&num)) || ranges[1].clone().any(|num| ranges[0].contains(&num)) {
             overlap_pairs += 1;
         }
     });
