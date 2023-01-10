@@ -1,6 +1,7 @@
 mod aoc22_1;
 mod aoc22_2;
 mod aoc22_3;
+mod aoc22_4;
 use text_io::read;
 
 fn main() {
@@ -11,7 +12,8 @@ fn main() {
         1 => aoc22_1::solution(),
         2 => aoc22_2::solution(),
         3 => aoc22_3::solution(),
-        4..=25 => println!("Not implemented yet"),
+        4 => aoc22_4::solution(),
+        5..=25 => println!("Not implemented yet"),
         _ => println!("Incorrect number...")
     }
 }
