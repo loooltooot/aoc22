@@ -15,19 +15,26 @@ pub fn solution() {
     ];
 
     input.lines().for_each(|line| {
-        let (mut amount, from, to) = {
+        let (amount, mut from, mut to, from_index, to_index) = {
             let temp = line.split(" ").collect::<Vec<&str>>();
+            let from_index = temp[3].parse::<usize>().unwrap() - 1;
+            let to_index = temp[5].parse::<usize>().unwrap() - 1;
 
             (temp[1].parse::<usize>().unwrap(), 
-            temp[3].parse::<usize>().unwrap() - 1, 
-            temp[5].parse::<usize>().unwrap() - 1)
+            crates_stacks[from_index].clone(), 
+            crates_stacks[to_index].clone(),
+            from_index, to_index)
         };
 
-        while amount > 0 {
-            let pick = crates_stacks[from].pop().expect("Cannot pick crate");
-            crates_stacks[to].push(pick);
-            amount -= 1;
-        }
+        let stack_len = from.len();
+        from[(stack_len - amount)..]
+            .iter()
+            .for_each(|item| to.push(*item));
+
+        from.truncate(stack_len - amount);
+
+        crates_stacks[from_index] = from;
+        crates_stacks[to_index] = to;
     });
 
     crates_stacks.iter().for_each(|stack| {
