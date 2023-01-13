@@ -5,7 +5,7 @@ pub fn solution() {
     let mut marker_characters = 0;
     let characters = input.chars().collect::<Vec<char>>();
     for i in 0..characters.len() {
-        let mut pot_marker = characters[i..=i+3].iter().collect::<Vec<&char>>().clone();
+        let mut pot_marker = characters[i..=i+13].iter().collect::<Vec<&char>>().clone();
         let mut is_marker = true;
 
         while let Some(c) = pot_marker.pop() {
@@ -16,7 +16,7 @@ pub fn solution() {
         }
 
         if is_marker {
-            marker_characters = i + 4; // +4 because we need to count characters and index is less by 1
+            marker_characters = i + 14; // +4 because we need to count characters and index is less by 1
             break;
         }
     }
